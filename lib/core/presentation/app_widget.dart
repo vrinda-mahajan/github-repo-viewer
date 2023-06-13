@@ -5,9 +5,11 @@ import 'package:github_repo_viewer/auth/application/auth_notifier.dart';
 import 'package:github_repo_viewer/auth/shared/providers.dart';
 import 'package:github_repo_viewer/core/presentation/routes/app_routes.dart';
 import 'package:github_repo_viewer/core/presentation/routes/app_routes.gr.dart';
+import 'package:github_repo_viewer/core/shared/provider.dart';
 
 final initializationProvider = FutureProvider<Unit>((ref) async {
   final authNotifier = ref.read(authNotifierProvider.notifier);
+  await ref.read(sembastProvider).init();
   await authNotifier.checkAndUpdateAuthStatus();
   return unit;
 });

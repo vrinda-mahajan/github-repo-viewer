@@ -4,8 +4,7 @@ import 'package:github_repo_viewer/core/presentation/routes/app_routes.gr.dart';
 @AutoRouterConfig()
 class AppRouter extends $AppRouter {
   @override
-  RouteType get defaultRouteType =>
-      const RouteType.material(); //.cupertino, .adaptive ..etc
+  RouteType get defaultRouteType => const RouteType.material();
 
   @override
   List<AutoRoute> get routes => [
