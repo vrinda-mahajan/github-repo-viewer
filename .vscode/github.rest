@@ -1,0 +1,38 @@
+@baseUrl = https://api.github.com
+@authToken = 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
+@acceptHeader = application/vnd.github.html+json
+
+
+GET {{baseUrl}}/user/starred
+?page=1 
+Authorization: Bearer {{authToken}}
+Accept: {{acceptHeader}}
+
+###
+
+GET {{baseUrl}}/search/repositories
+?q=flutter
+&page=1
+Authorization: Bearer {{authToken}}
+Accept: {{acceptHeader}}
+
+###
+GET {{baseUrl}}/repos/flutter/flutter/readme
+Authorization: Bearer {{authToken}}
+Accept: {{acceptHeader}}
+
+###
+PUT {{baseUrl}}/user/starred/{owner}/{repo}
+Authorization: Bearer {{authToken}}
+Accept: {{acceptHeader}}
+Content-Length: 0
+
+###
+DELETE {{baseUrl}}/user/starred/{owner}/{repo}
+Authorization: Bearer {{authToken}}
+Accept: {{acceptHeader}}
+
+###
+GET {{baseUrl}}/user/starred/vikhyatsingh123/Naruto-Shippuden
+Authorization: Bearer {{authToken}}
+Accept: {{acceptHeader}}
