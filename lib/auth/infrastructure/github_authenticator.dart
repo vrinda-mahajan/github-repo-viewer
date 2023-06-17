@@ -8,6 +8,8 @@ import 'package:github_repo_viewer/core/shared/encoders.dart';
 import 'package:oauth2/oauth2.dart';
 import 'package:http/http.dart' as http;
 
+import 'oauth_credentials.dart';
+
 class GithubOauthHttpClient extends http.BaseClient {
   final httpClient = http.Client();
 
@@ -24,8 +26,8 @@ class GithubAuthenticator {
 
   GithubAuthenticator(this._credentialsStorage, this._dio);
 
-  static const clientId = "eee717747e2513eb6d8f";
-  static const clientSecret = "4b367b8cc3542e287f7ce3b543e0726273cf03c5";
+  static const clientId = OauthCredentials.clientId;
+  static const clientSecret = OauthCredentials.clientSecret;
   static const scopes = ["read:user", "repo"];
   static final authorizationEndpoint =
       Uri.parse('https://github.com/login/oauth/authorize');
