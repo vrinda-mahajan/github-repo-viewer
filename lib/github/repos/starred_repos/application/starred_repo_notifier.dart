@@ -37,7 +37,8 @@ class StarredReposNotifier extends StateNotifier<StarredRepoState> {
             Fresh.yes([]),
           ),
         );
-  int _page = 1;
+  // not including it in state because it is only required by the infrastructure layer(starred_repo_repository) and not by the presentation layer
+  int _page = 1; // mutable field
 
   Future<void> getNextStarredReposPage() async {
     state = StarredRepoState.loadInProgress(
