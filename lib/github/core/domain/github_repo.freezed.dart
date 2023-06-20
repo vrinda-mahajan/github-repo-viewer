@@ -17,8 +17,8 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$GithubRepo {
   User get owner => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  String get fullName => throw _privateConstructorUsedError;
+  String get name =>
+      throw _privateConstructorUsedError; // required String fullName,
   String get description => throw _privateConstructorUsedError;
   int get stargazersCount => throw _privateConstructorUsedError;
 
@@ -33,12 +33,7 @@ abstract class $GithubRepoCopyWith<$Res> {
           GithubRepo value, $Res Function(GithubRepo) then) =
       _$GithubRepoCopyWithImpl<$Res, GithubRepo>;
   @useResult
-  $Res call(
-      {User owner,
-      String name,
-      String fullName,
-      String description,
-      int stargazersCount});
+  $Res call({User owner, String name, String description, int stargazersCount});
 
   $UserCopyWith<$Res> get owner;
 }
@@ -58,7 +53,6 @@ class _$GithubRepoCopyWithImpl<$Res, $Val extends GithubRepo>
   $Res call({
     Object? owner = null,
     Object? name = null,
-    Object? fullName = null,
     Object? description = null,
     Object? stargazersCount = null,
   }) {
@@ -70,10 +64,6 @@ class _$GithubRepoCopyWithImpl<$Res, $Val extends GithubRepo>
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      fullName: null == fullName
-          ? _value.fullName
-          : fullName // ignore: cast_nullable_to_non_nullable
               as String,
       description: null == description
           ? _value.description
@@ -103,12 +93,7 @@ abstract class _$$_GithuRepoCopyWith<$Res>
       __$$_GithuRepoCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {User owner,
-      String name,
-      String fullName,
-      String description,
-      int stargazersCount});
+  $Res call({User owner, String name, String description, int stargazersCount});
 
   @override
   $UserCopyWith<$Res> get owner;
@@ -127,7 +112,6 @@ class __$$_GithuRepoCopyWithImpl<$Res>
   $Res call({
     Object? owner = null,
     Object? name = null,
-    Object? fullName = null,
     Object? description = null,
     Object? stargazersCount = null,
   }) {
@@ -139,10 +123,6 @@ class __$$_GithuRepoCopyWithImpl<$Res>
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      fullName: null == fullName
-          ? _value.fullName
-          : fullName // ignore: cast_nullable_to_non_nullable
               as String,
       description: null == description
           ? _value.description
@@ -162,7 +142,6 @@ class _$_GithuRepo extends _GithuRepo {
   const _$_GithuRepo(
       {required this.owner,
       required this.name,
-      required this.fullName,
       required this.description,
       required this.stargazersCount})
       : super._();
@@ -171,8 +150,7 @@ class _$_GithuRepo extends _GithuRepo {
   final User owner;
   @override
   final String name;
-  @override
-  final String fullName;
+// required String fullName,
   @override
   final String description;
   @override
@@ -180,7 +158,7 @@ class _$_GithuRepo extends _GithuRepo {
 
   @override
   String toString() {
-    return 'GithubRepo(owner: $owner, name: $name, fullName: $fullName, description: $description, stargazersCount: $stargazersCount)';
+    return 'GithubRepo(owner: $owner, name: $name, description: $description, stargazersCount: $stargazersCount)';
   }
 
   @override
@@ -190,8 +168,6 @@ class _$_GithuRepo extends _GithuRepo {
             other is _$_GithuRepo &&
             (identical(other.owner, owner) || other.owner == owner) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.fullName, fullName) ||
-                other.fullName == fullName) &&
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.stargazersCount, stargazersCount) ||
@@ -199,8 +175,8 @@ class _$_GithuRepo extends _GithuRepo {
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, owner, name, fullName, description, stargazersCount);
+  int get hashCode =>
+      Object.hash(runtimeType, owner, name, description, stargazersCount);
 
   @JsonKey(ignore: true)
   @override
@@ -213,7 +189,6 @@ abstract class _GithuRepo extends GithubRepo {
   const factory _GithuRepo(
       {required final User owner,
       required final String name,
-      required final String fullName,
       required final String description,
       required final int stargazersCount}) = _$_GithuRepo;
   const _GithuRepo._() : super._();
@@ -222,9 +197,7 @@ abstract class _GithuRepo extends GithubRepo {
   User get owner;
   @override
   String get name;
-  @override
-  String get fullName;
-  @override
+  @override // required String fullName,
   String get description;
   @override
   int get stargazersCount;

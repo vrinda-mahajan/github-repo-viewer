@@ -54,9 +54,9 @@ class OAuth2Interceptor extends Interceptor {
                   'bearer ${refreshedCredentials.accessToken}',
           ),
         );
-      } else {
-        handler.next(err);
       }
+    } else {
+      handler.next(err);
     }
   }
 }

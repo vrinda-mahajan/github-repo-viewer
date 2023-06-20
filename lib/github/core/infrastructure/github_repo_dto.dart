@@ -17,7 +17,7 @@ class GithubRepoDTO with _$GithubRepoDTO {
   const factory GithubRepoDTO({
     required UserDTO owner,
     required String name,
-    required String fullName,
+    // required String fullName,
     @JsonKey(fromJson: _descriptionFromJson) required String description,
     @JsonKey(name: 'stargazers_count') required int stargazersCount,
   }) = _GithubRepoDTO;
@@ -29,7 +29,7 @@ class GithubRepoDTO with _$GithubRepoDTO {
     return GithubRepoDTO(
       owner: UserDTO.fromDomaim(_.owner),
       name: _.name,
-      fullName: _.fullName,
+      // fullName: _.fullName,
       description: _.description,
       stargazersCount: _.stargazersCount,
     );
@@ -39,7 +39,7 @@ class GithubRepoDTO with _$GithubRepoDTO {
     return GithubRepo(
       owner: owner.toDomain(),
       name: name,
-      fullName: fullName,
+      // fullName: fullName,
       description: description,
       stargazersCount: stargazersCount,
     );

@@ -10,16 +10,14 @@ _$_GithubRepoDTO _$$_GithubRepoDTOFromJson(Map<String, dynamic> json) =>
     _$_GithubRepoDTO(
       owner: UserDTO.fromJson(json['owner'] as Map<String, dynamic>),
       name: json['name'] as String,
-      fullName: json['fullName'] as String,
       description: _descriptionFromJson(json['description']),
       stargazersCount: json['stargazers_count'] as int,
     );
 
 Map<String, dynamic> _$$_GithubRepoDTOToJson(_$_GithubRepoDTO instance) =>
     <String, dynamic>{
-      'owner': instance.owner,
+      'owner': instance.owner.toJson(),
       'name': instance.name,
-      'fullName': instance.fullName,
       'description': instance.description,
       'stargazers_count': instance.stargazersCount,
     };

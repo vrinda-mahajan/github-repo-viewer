@@ -21,8 +21,8 @@ GithubRepoDTO _$GithubRepoDTOFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$GithubRepoDTO {
   UserDTO get owner => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  String get fullName => throw _privateConstructorUsedError;
+  String get name =>
+      throw _privateConstructorUsedError; // required String fullName,
   @JsonKey(fromJson: _descriptionFromJson)
   String get description => throw _privateConstructorUsedError;
   @JsonKey(name: 'stargazers_count')
@@ -43,7 +43,6 @@ abstract class $GithubRepoDTOCopyWith<$Res> {
   $Res call(
       {UserDTO owner,
       String name,
-      String fullName,
       @JsonKey(fromJson: _descriptionFromJson) String description,
       @JsonKey(name: 'stargazers_count') int stargazersCount});
 
@@ -65,7 +64,6 @@ class _$GithubRepoDTOCopyWithImpl<$Res, $Val extends GithubRepoDTO>
   $Res call({
     Object? owner = null,
     Object? name = null,
-    Object? fullName = null,
     Object? description = null,
     Object? stargazersCount = null,
   }) {
@@ -77,10 +75,6 @@ class _$GithubRepoDTOCopyWithImpl<$Res, $Val extends GithubRepoDTO>
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      fullName: null == fullName
-          ? _value.fullName
-          : fullName // ignore: cast_nullable_to_non_nullable
               as String,
       description: null == description
           ? _value.description
@@ -113,7 +107,6 @@ abstract class _$$_GithubRepoDTOCopyWith<$Res>
   $Res call(
       {UserDTO owner,
       String name,
-      String fullName,
       @JsonKey(fromJson: _descriptionFromJson) String description,
       @JsonKey(name: 'stargazers_count') int stargazersCount});
 
@@ -134,7 +127,6 @@ class __$$_GithubRepoDTOCopyWithImpl<$Res>
   $Res call({
     Object? owner = null,
     Object? name = null,
-    Object? fullName = null,
     Object? description = null,
     Object? stargazersCount = null,
   }) {
@@ -146,10 +138,6 @@ class __$$_GithubRepoDTOCopyWithImpl<$Res>
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      fullName: null == fullName
-          ? _value.fullName
-          : fullName // ignore: cast_nullable_to_non_nullable
               as String,
       description: null == description
           ? _value.description
@@ -169,7 +157,6 @@ class _$_GithubRepoDTO extends _GithubRepoDTO {
   const _$_GithubRepoDTO(
       {required this.owner,
       required this.name,
-      required this.fullName,
       @JsonKey(fromJson: _descriptionFromJson) required this.description,
       @JsonKey(name: 'stargazers_count') required this.stargazersCount})
       : super._();
@@ -181,8 +168,7 @@ class _$_GithubRepoDTO extends _GithubRepoDTO {
   final UserDTO owner;
   @override
   final String name;
-  @override
-  final String fullName;
+// required String fullName,
   @override
   @JsonKey(fromJson: _descriptionFromJson)
   final String description;
@@ -192,7 +178,7 @@ class _$_GithubRepoDTO extends _GithubRepoDTO {
 
   @override
   String toString() {
-    return 'GithubRepoDTO(owner: $owner, name: $name, fullName: $fullName, description: $description, stargazersCount: $stargazersCount)';
+    return 'GithubRepoDTO(owner: $owner, name: $name, description: $description, stargazersCount: $stargazersCount)';
   }
 
   @override
@@ -202,8 +188,6 @@ class _$_GithubRepoDTO extends _GithubRepoDTO {
             other is _$_GithubRepoDTO &&
             (identical(other.owner, owner) || other.owner == owner) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.fullName, fullName) ||
-                other.fullName == fullName) &&
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.stargazersCount, stargazersCount) ||
@@ -212,8 +196,8 @@ class _$_GithubRepoDTO extends _GithubRepoDTO {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, owner, name, fullName, description, stargazersCount);
+  int get hashCode =>
+      Object.hash(runtimeType, owner, name, description, stargazersCount);
 
   @JsonKey(ignore: true)
   @override
@@ -233,7 +217,6 @@ abstract class _GithubRepoDTO extends GithubRepoDTO {
   const factory _GithubRepoDTO(
       {required final UserDTO owner,
       required final String name,
-      required final String fullName,
       @JsonKey(fromJson: _descriptionFromJson)
           required final String description,
       @JsonKey(name: 'stargazers_count')
@@ -247,9 +230,7 @@ abstract class _GithubRepoDTO extends GithubRepoDTO {
   UserDTO get owner;
   @override
   String get name;
-  @override
-  String get fullName;
-  @override
+  @override // required String fullName,
   @JsonKey(fromJson: _descriptionFromJson)
   String get description;
   @override

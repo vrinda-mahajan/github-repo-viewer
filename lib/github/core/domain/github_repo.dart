@@ -9,11 +9,12 @@ class GithubRepo with _$GithubRepo {
   const factory GithubRepo({
     required User owner,
     required String name,
-    required String fullName,
+    // required String fullName,
     required String description,
     required int stargazersCount,
   }) = _GithuRepo;
 
 // related to business logic
-  // String get fullName => '${owner.name}/$name'; (if fullname was not present in the response)
+  String get fullName =>
+      '${owner.name}/$name'; //(if fullname was not present in the response)
 }
