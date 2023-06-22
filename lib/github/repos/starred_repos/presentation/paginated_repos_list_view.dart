@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:github_repo_viewer/core/presentation/toast.dart';
 import 'package:github_repo_viewer/github/core/shared/providers.dart';
 import 'package:github_repo_viewer/github/repos/starred_repos/application/starred_repo_notifier.dart';
 import 'package:github_repo_viewer/github/repos/starred_repos/presentation/failure_repo_tile.dart';
@@ -21,7 +22,7 @@ class PaginatedReposListView extends ConsumerStatefulWidget {
 class _PaginatedReposListViewState
     extends ConsumerState<PaginatedReposListView> {
   bool canLoadNextPage = false;
-
+  bool isNoConnectionToastShown = false;
   @override
   Widget build(BuildContext context) {
     ref.listen<StarredRepoState>(starredReposNotifierProvider,
@@ -29,7 +30,16 @@ class _PaginatedReposListViewState
       state.map(
         initial: (_) => canLoadNextPage = true,
         loadInProgress: (_) => canLoadNextPage = false,
-        loadSuccess: (_) => canLoadNextPage = _.isNextPageAvailable,
+        loadSuccess: (_) {
+          if (!_.repos.isFresh && !isNoConnectionToastShown) {
+            isNoConnectionToastShown = true;
+            ShowNoConnectionToast(
+              "You're not online. Some information may be outdated.",
+              context,
+            );
+          }
+          canLoadNextPage = _.isNextPageAvailable;
+        },
         loadFailure: (_) => canLoadNextPage = false,
       );
     });
