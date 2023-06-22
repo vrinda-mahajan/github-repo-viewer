@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:github_repo_viewer/github/core/shared/providers.dart';
+import 'package:github_repo_viewer/github/repos/starred_repos/presentation/failure_repo_tile.dart';
 import 'package:github_repo_viewer/github/repos/starred_repos/presentation/repo_tile.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -33,7 +34,15 @@ class PaginatedReposListView extends ConsumerWidget {
             }
           },
           loadSuccess: (_) => RepoTile(repo: _.repos.entity[index]),
-          loadFailure: (_) => Container(),
+          loadFailure: (_) {
+            if (index < _.repos.entity.length) {
+              return RepoTile(
+                repo: _.repos.entity[index],
+              );
+            } else {
+              return FailureRepoTile(failure: _.failure);
+            }
+          },
         );
       },
     );

@@ -41,6 +41,7 @@ class StarredReposNotifier extends StateNotifier<StarredRepoState> {
   int _page = 1; // mutable field
 
   Future<void> getNextStarredReposPage() async {
+    // state = StarredRepoState.loadFailure(state.repos, GithubFailure.api(404));
     state = StarredRepoState.loadInProgress(
       state.repos,
       PaginationConfig.itemsPerPage,
