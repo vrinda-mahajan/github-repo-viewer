@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:github_repo_viewer/core/presentation/toast.dart';
+import 'package:github_repo_viewer/github/core/presentation/no_result_display.dart';
 import 'package:github_repo_viewer/github/core/shared/providers.dart';
 import 'package:github_repo_viewer/github/repos/starred_repos/application/starred_repo_notifier.dart';
 import 'package:github_repo_viewer/github/repos/starred_repos/presentation/failure_repo_tile.dart';
@@ -45,18 +46,25 @@ class _PaginatedReposListViewState
     });
     final state = ref.watch(starredReposNotifierProvider);
     return NotificationListener<ScrollNotification>(
-        onNotification: (notification) {
-          final metrics = notification.metrics;
-          final limit = metrics.maxScrollExtent - metrics.viewportDimension / 3;
-          if (canLoadNextPage && metrics.pixels >= limit) {
-            canLoadNextPage = false;
-            ref
-                .read(starredReposNotifierProvider.notifier)
-                .getNextStarredReposPage();
-          }
-          return false;
-        },
-        child: _PaginatedListView(state: state));
+      onNotification: (notification) {
+        final metrics = notification.metrics;
+        final limit = metrics.maxScrollExtent - metrics.viewportDimension / 3;
+        if (canLoadNextPage && metrics.pixels >= limit) {
+          canLoadNextPage = false;
+          ref
+              .read(starredReposNotifierProvider.notifier)
+              .getNextStarredReposPage();
+        }
+        return false;
+      },
+      child: state.maybeWhen(
+              loadSuccess: (repos, _) => repos.entity.isEmpty,
+              orElse: () => false)
+          ? const NoResultDisplay(
+              message:
+                  "That's about everything we could find in your starred repos right now.")
+          : _PaginatedListView(state: state),
+    );
   }
 }
 
