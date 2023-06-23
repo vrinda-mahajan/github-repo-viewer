@@ -20,6 +20,8 @@ class StarredReposLocalService {
           _sembastDatabase.instance,
           dtos.map((e) => e.toJson()).toList(),
         );
+    // print("from upsert");
+    // print(await _store.count(_sembastDatabase.instance));
   }
 
   Future<List<GithubRepoDTO>> getPage(int page) async {
@@ -34,5 +36,11 @@ class StarredReposLocalService {
     );
 
     return records.map((e) => GithubRepoDTO.fromJson(e.value)).toList();
+  }
+
+  Future<int> getLocalPageCount() async {
+    final repoCount = await _store.count(_sembastDatabase.instance);
+    // print(repoCount);
+    return (repoCount / PaginationConfig.itemsPerPage).ceil();
   }
 }
