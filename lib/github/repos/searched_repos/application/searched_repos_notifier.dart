@@ -4,11 +4,9 @@ import 'package:github_repo_viewer/github/repos/searched_repos/infrastructure/se
 class SearchedReposNotifier extends PaginatedReposNotifier {
   final SearchedReposRepository _repository;
 
-  SearchedReposNotifier(this._repository)
-      : super(
-        );
+  SearchedReposNotifier(this._repository) : super();
 
-  Future<void> getNextStarredReposPage(String query) async {
+  Future<void> getNextSearchedReposPage(String query) async {
     super.getNextPage((page) => _repository.getSearchedReposPage(page, query));
   }
 }
